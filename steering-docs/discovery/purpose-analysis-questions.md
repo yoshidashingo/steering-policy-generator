@@ -1,60 +1,79 @@
-# Purpose Analysis Questions
+# Purpose Analysis Questions — カスタマーサポート対応エージェント
 
-既存のSPMポリシーをブラッシュアップするにあたり、改善の方向性を確認させてください。
+以下の質問に回答して、ターゲットエージェントの目的を明確にしてください。
 
 ## Question 1
-ブラッシュアップの重点領域はどこですか？
+カスタマーサポートエージェントの主なワークフローパターンはどれですか？
 
-A) 全体的な品質向上（全フェーズ・全ステージの見直し）
-B) DISCOVERY PHASEの改善（目的分析・ドメイン調査の精度向上）
-C) DESIGN PHASEの改善（設計の精緻化）
-D) GENERATION PHASEの改善（生成品質・コンテンツの充実）
-E) REFINEMENT PHASEの改善（品質検証の強化）
-F) Other (please describe after [Answer]: tag below)
+A) 問い合わせ受付 → 分類 → 回答生成 → 品質チェック → 送信（順次プロセス型）
+B) 問い合わせ内容を分析し、適切な回答を1ステップで生成（タスク型）
+C) 問い合わせデータを蓄積・分析し、FAQ やナレッジベースを生成（分析型）
+D) 状況に応じて即時回答・エスカレーション・分析を切り替え（ハイブリッド型）
+X) Other (please describe after [Answer]: tag below)
 
 [Answer]:
 
 ## Question 2
-既存のポリシーで特に課題を感じている点はありますか？
+エージェントが対応するチャネルはどれですか？
 
-A) ワークフローが長すぎる・ステップが多すぎる
-B) 生成されるポリシーの品質が不十分（内容が浅い・汎用的すぎる）
-C) ユーザーへの質問が多すぎる・少なすぎる
-D) セッション継続（中断・再開）がうまく機能しない
-E) 特に課題は感じていない（全体的なブラッシュアップを希望）
-F) Other (please describe after [Answer]: tag below)
+A) メール対応のみ
+B) チャット（リアルタイム）対応のみ
+C) メール + チャットの複数チャネル
+D) メール + チャット + 電話後処理（アフターコールワーク）
+X) Other (please describe after [Answer]: tag below)
 
 [Answer]:
 
 ## Question 3
-ブラッシュアップ後に期待する改善効果は何ですか？
+エスカレーション（人間オペレーターへの引き継ぎ）の頻度はどの程度を想定していますか？
 
-A) より短時間でポリシーを生成できるようにしたい（効率化）
-B) より高品質なポリシーを生成できるようにしたい（品質向上）
-C) より多様なエージェントタイプに対応したい（対応範囲拡大）
-D) 既存のAI-DLC 11品質次元に加えて新たな品質基準を追加したい
-E) Other (please describe after [Answer]: tag below)
+A) ほぼ不要 — エージェントが大半を自律処理（エスカレーション率 < 10%）
+B) 一部必要 — 複雑な案件のみ引き継ぎ（エスカレーション率 10-30%）
+C) 頻繁に必要 — エージェントは一次対応・分類が主（エスカレーション率 30-50%）
+D) エージェントは補助役 — 人間が主対応、エージェントはドラフト・提案（エスカレーション率 50%+）
+X) Other (please describe after [Answer]: tag below)
 
 [Answer]:
 
 ## Question 4
-新たに追加したい機能や仕組みはありますか？
+対応するサポート領域はどれですか？
 
-A) エージェント間の連携・オーケストレーション対応
-B) 既存ポリシーのバージョン管理・差分更新機能
-C) テンプレートライブラリ（頻出パターンの再利用）
-D) 自動テスト・検証機能（生成ポリシーの動作検証）
-E) 特になし（既存機能のブラッシュアップのみ）
-F) Other (please describe after [Answer]: tag below)
+A) SaaS / Webサービスのテクニカルサポート
+B) ECサイトの注文・配送・返品対応
+C) 金融サービス（口座・取引・契約に関する問い合わせ）
+D) 汎用（特定ドメインに限定しない一般的なカスタマーサポート）
+X) Other (please describe after [Answer]: tag below)
 
 [Answer]:
 
 ## Question 5
-ターゲットとするAIモデル・プラットフォームに変更はありますか？
+トーン・スタイルの制御はどの程度必要ですか？
 
-A) Claude Code（現状維持）
-B) Claude Code + 他のClaude製品（API、Copilot等）
-C) マルチLLMプラットフォーム対応（Claude以外も含む）
-D) Other (please describe after [Answer]: tag below)
+A) 最低限 — 丁寧語であればよい
+B) 標準 — ブランドガイドラインに沿ったトーン統一が必要
+C) 厳格 — 顧客セグメント別（VIP / 一般 / クレーム対応）にトーンを切り替え
+D) 高度 — 感情分析に基づくリアルタイムなトーン調整
+X) Other (please describe after [Answer]: tag below)
+
+[Answer]:
+
+## Question 6
+品質管理・コンプライアンスの要件レベルはどれですか？
+
+A) 基本 — 回答の正確性チェックのみ
+B) 標準 — 正確性 + 禁止表現チェック + 応答時間SLA
+C) 厳格 — 上記 + 個人情報保護（PII検出・マスキング） + 監査ログ
+D) 規制対応 — 上記 + 業界規制準拠（金融・医療等）+ コンプライアンスレビュー
+X) Other (please describe after [Answer]: tag below)
+
+[Answer]:
+
+## Question 7
+エージェントの想定利用規模はどれですか？
+
+A) 小規模 — 1チーム・1プロダクト向け（月間数百件）
+B) 中規模 — 複数チーム・複数プロダクト（月間数千件）
+C) 大規模 — 企業全体のサポート基盤（月間数万件以上）
+X) Other (please describe after [Answer]: tag below)
 
 [Answer]:
