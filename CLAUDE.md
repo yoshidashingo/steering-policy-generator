@@ -17,19 +17,20 @@
 - **詳細ルール**: `.aidlc/aws-aidlc-rule-details/` 配下のフェーズ別ルールに従う
 - **フェーズ**: Inception → Construction → Operations
 
-### ステアリングポリシーの生成時 → `.steering/` ルールを使用
+### ステアリングポリシーの生成時 → `skills/generate/` を使用
 
-- **対象**: 「XXX業務のステアリングポリシーを生成してください」等のポリシー生成依頼
-- **ルール読み込み**: `.steering/aws-aidlc-rules/core-workflow.md` をエントリポイントとして読み込む
-- **詳細ルール**: `.steering/aws-aidlc-rule-details/` 配下のフェーズ別ルールに従う
+- **対象**: `/stegoro:generate` スキル経由、または「XXX業務のステアリングポリシーを生成してください」等のポリシー生成依頼
+- **エントリポイント**: `skills/generate/SKILL.md`
+- **ルール詳細**: `skills/generate/rule-details/` 配下のフェーズ別ルールに従う
 - **フェーズ**: Discovery → Design → Generation → Refinement
 
 ### 判定基準
 
 | ユーザーの依頼 | 使用ルール |
 |---|---|
-| 「ステアリングポリシーを生成して」 | `.steering/` |
-| 「XXX業務のエージェントを作って」 | `.steering/` |
+| `/stegoro:generate` | `skills/generate/` |
+| 「ステアリングポリシーを生成して」 | `skills/generate/` |
+| 「XXX業務のエージェントを作って」 | `skills/generate/` |
 | 「このリポジトリを改善して」 | `.aidlc/` |
 | 「バグを修正して」 | `.aidlc/` |
 | 「新機能を追加して」 | `.aidlc/` |
@@ -47,15 +48,20 @@
     ├── construction/            # 構築フェーズ
     └── operations/              # 運用フェーズ
 
-.steering/                       # ポリシー生成用ルール
-├── aws-aidlc-rules/
-│   └── core-workflow.md         # メインワークフロー
-└── aws-aidlc-rule-details/
-    ├── common/                  # 共通ルール
-    ├── discovery/               # 調査フェーズ
-    ├── design/                  # 設計フェーズ
-    ├── generation/              # 生成フェーズ
-    └── refinement/              # 精緻化フェーズ
+.claude-plugin/                  # Claude Codeプラグインメタデータ
+├── plugin.json                  # プラグイン定義
+└── marketplace.json             # マーケットプレイス登録情報
+
+skills/                          # Claude Codeスキル
+└── generate/                    # ステアリングポリシー生成スキル
+    ├── SKILL.md                 # スキルエントリポイント
+    └── rule-details/            # ルール詳細
+        ├── core-workflow.md     # メインワークフロー
+        ├── common/              # 共通ルール
+        ├── discovery/           # 調査フェーズ
+        ├── design/              # 設計フェーズ
+        ├── generation/          # 生成フェーズ
+        └── refinement/          # 精緻化フェーズ
 
 steering-docs/                   # ポリシー生成時の作業ドキュメント
 .claude/rules/                   # Claude Code ルーティングルール

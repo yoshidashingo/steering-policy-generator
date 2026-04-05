@@ -1,4 +1,4 @@
-# Glob: .steering/**/*.md
+# Glob: skills/generate/**/*.md
 
 ## ステアリングポリシー生成ルール
 
@@ -6,11 +6,11 @@
 
 ### エントリポイント
 
-`.steering/aws-aidlc-rules/core-workflow.md` を最初に読み込むこと。
+`skills/generate/SKILL.md` を最初に読み込むこと。
 
 ### ルール詳細の読み込み
 
-各フェーズの作業時に `.steering/aws-aidlc-rule-details/` 配下の該当ファイルを読み込む:
+各フェーズの作業時に `skills/generate/rule-details/` 配下の該当ファイルを読み込む:
 
 - **common/**: 全フェーズ共通のルール（最初に読み込む）
 - **discovery/**: 目的分析・ドメインリサーチフェーズ
@@ -22,6 +22,7 @@
 
 以下の依頼時にこのルールセットを使用する:
 
+- `/stegoro:generate` スキルの実行
 - 「XXXのステアリングポリシーを生成して」
 - 「XXX業務のエージェントを作って」
 - 目的別エージェント用ポリシーの作成全般

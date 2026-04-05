@@ -38,15 +38,17 @@
 
 ## Estimated Structure（コンパクトサマリー）
 
-- **Phases**: 4（DISCOVERY, DESIGN, GENERATION, REFINEMENT）
-- **Total Stages**: 15（ALWAYS: 14, CONDITIONAL: 1）
+> **Note**: DESIGN Phase (Workflow Architecture) にてPhase 5: PACKAGINGを追加決定。4→5フェーズ、15→18ステージに変更。
+
+- **Phases**: 5（DISCOVERY, DESIGN, GENERATION, REFINEMENT, PACKAGING）
+- **Total Stages**: 18（ALWAYS: 16, CONDITIONAL: 2）
 - **Common Rule Files**: 11（標準: 10, ドメイン固有: 1 — implementation-knowhow.md）
-- **Phase Rule Files**: 15（discovery: 4, design: 4, generation: 4, refinement: 3）
-- **Total Policy Files**: 27（core-workflow 1 + common 11 + phase rules 15）
+- **Phase Rule Files**: 18（discovery: 4, design: 4, generation: 4, refinement: 3, packaging: 3）
+- **Total Policy Files**: 30（core-workflow 1 + common 11 + phase rules 18）
 - **Total New Plugin Files**: 15（agents 4 + skills 4 + commands 3 + plugin config 2 + rules 1 + validation-agent 1）
-- **Grand Total Files**: 42
+- **Grand Total Files**: 45
 - **Estimated Current Lines**: ~7,500
-- **Estimated Target Lines**: ~10,400（ポリシー ~9,000 + プラグイン ~1,400）
+- **Estimated Target Lines**: ~11,200（ポリシー ~9,800 + プラグイン ~1,400）
 
 ## Preliminary Phase Structure
 
@@ -72,6 +74,11 @@
 - Completeness Review (ALWAYS)
 - Consistency Review (ALWAYS)
 - Quality Calibration (ALWAYS)
+
+### PACKAGING Phase
+- Plugin Structure Generation (ALWAYS)
+- Automated Validation (ALWAYS)
+- Migration Execution (CONDITIONAL — Execute IF: 既存ポリシーのブラッシュアップ)
 
 ---
 

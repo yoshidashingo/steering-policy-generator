@@ -171,11 +171,13 @@
       <p><strong>Prerequisites:</strong> <a href="https://claude.ai/code">Claude Code</a> installed and configured.</p>
     </div>
     <div class="info-box" style="margin-top:12px">
-      <p><strong>1.</strong> Clone the repository:</p>
-      <p><code>git clone https://github.com/yoshidashingo/steering-policy-generator.git</code></p>
-      <p><strong>2.</strong> Open Claude Code and request:</p>
-      <p><code>Generate a steering policy for a code review agent.</code></p>
-      <p><strong>3.</strong> Follow the interactive 4-phase workflow. The generator never advances without your explicit approval.</p>
+      <p><strong>1.</strong> Add the marketplace (one-time):</p>
+      <p><code>/plugin marketplace add yoshidashingo/steering-policy-generator</code></p>
+      <p><strong>2.</strong> Install the plugin:</p>
+      <p><code>/plugin install stegoro@steering-policy-generator</code></p>
+      <p><strong>3.</strong> Start generating:</p>
+      <p><code>/stegoro:generate a code review agent</code></p>
+      <p><strong>4.</strong> Follow the interactive 4-phase workflow. The generator never advances without your explicit approval.</p>
     </div>
   </div>
 </section>

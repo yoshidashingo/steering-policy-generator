@@ -1,0 +1,22 @@
+{
+  "name": "stegoro",
+  "description": "Auto-generate steering policies that drive purpose-built AI agents through structured, quality-assured workflows",
+  "version": "0.1.0",
+  "author": {
+    "name": "yoshidashingo"
+  },
+  "homepage": "https://stegoro.com",
+  "repository": "https://github.com/yoshidashingo/steering-policy-generator",
+  "license": "MIT",
+  "keywords": [
+    "stegoro",
+    "steering-policy",
+    "ai-agent",
+    "policy-generator",
+    "claude-code",
+    "plugin",
+    "workflow",
+    "quality-assurance",
+    "ai-dlc"
+  ]
+}

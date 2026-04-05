@@ -67,30 +67,37 @@ A meta-agent for [Claude Code](https://claude.ai/code) that generates steering p
 
 - [Claude Code](https://claude.ai/code) installed and configured
 
-### Usage
+### Installation
 
-1. Clone this repository into your project:
+Add the marketplace and install the plugin (one-time setup):
 
 ```bash
-git clone https://github.com/yoshidashingo/steering-policy-generator.git
-cd steering-policy-generator
+/plugin marketplace add yoshidashingo/steering-policy-generator
+/plugin install stegoro@steering-policy-generator
 ```
 
-2. Open Claude Code and request a steering policy:
+### Usage
+
+1. Start the steering policy generator with a slash command:
 
 ```
-Generate a steering policy for [your agent's purpose].
+/stegoro:generate a code review agent
 ```
 
-For example:
+More examples:
 
 ```
-Generate a steering policy for a code review agent.
-Generate a steering policy for a proposal writing agent.
-Generate a steering policy for a security audit agent.
+/stegoro:generate a proposal writing agent
+/stegoro:generate a security audit agent
 ```
 
-3. The generator will guide you through the 4-phase workflow interactively:
+Or resume a previous session:
+
+```
+/stegoro:generate
+```
+
+2. The generator will guide you through the 4-phase workflow interactively:
 
 | Phase | Purpose | Key Activities |
 |-------|---------|----------------|
@@ -99,7 +106,7 @@ Generate a steering policy for a security audit agent.
 | **Generation** | Create the policy files | Core workflow, common rules, phase rules, integration validation |
 | **Refinement** | Ensure quality | Completeness review, consistency review, quality calibration |
 
-4. At each stage, review and approve before proceeding. The generator never advances without your explicit confirmation.
+3. At each stage, review and approve before proceeding. The generator never advances without your explicit confirmation.
 
 ### Example Agents Built With This Tool
 

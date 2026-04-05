@@ -171,11 +171,13 @@
       <p><strong>前提条件:</strong> <a href="https://claude.ai/code">Claude Code</a> がインストール・設定済みであること。</p>
     </div>
     <div class="info-box" style="margin-top:12px">
-      <p><strong>1.</strong> リポジトリをクローン:</p>
-      <p><code>git clone https://github.com/yoshidashingo/steering-policy-generator.git</code></p>
-      <p><strong>2.</strong> Claude Codeを開いて依頼:</p>
-      <p><code>コードレビューエージェント用のステアリングポリシーを生成してください。</code></p>
-      <p><strong>3.</strong> 対話的な4フェーズワークフローに沿って進めます。明示的な承認なしにジェネレーターが先に進むことはありません。</p>
+      <p><strong>1.</strong> マーケットプレイスを追加（初回のみ）:</p>
+      <p><code>/plugin marketplace add yoshidashingo/steering-policy-generator</code></p>
+      <p><strong>2.</strong> プラグインをインストール:</p>
+      <p><code>/plugin install stegoro@steering-policy-generator</code></p>
+      <p><strong>3.</strong> 生成を開始:</p>
+      <p><code>/stegoro:generate コードレビューエージェント</code></p>
+      <p><strong>4.</strong> 対話的な4フェーズワークフローに沿って進めます。明示的な承認なしにジェネレーターが先に進むことはありません。</p>
     </div>
   </div>
 </section>
