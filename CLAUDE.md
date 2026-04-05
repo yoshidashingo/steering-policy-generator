@@ -6,10 +6,97 @@
 
 目的別エージェント用のステアリングポリシー作成器。特定業務の目的別エージェントを駆動するステアリングポリシーを自動生成する。
 
-## 使い方
+## ルーティングルール（必須）
 
-「XXX業務をおこなう際のステアリングポリシーを生成してください」と依頼すると、該当業務向けのポリシーが生成される。
+このリポジトリには2つのルールセットがあり、作業コンテキストに応じて使い分ける。
+
+### リポジトリ自体の改善・開発時 → `.aidlc/` ルールを使用
+
+- **対象**: このリポジトリのコード・構造・ドキュメントの改善、新機能追加、リファクタリング、バグ修正
+- **ルール読み込み**: `.aidlc/aws-aidlc-rules/core-workflow.md` をエントリポイントとして読み込む
+- **詳細ルール**: `.aidlc/aws-aidlc-rule-details/` 配下のフェーズ別ルールに従う
+- **フェーズ**: Inception → Construction → Operations
+
+### ステアリングポリシーの生成時 → `.steering/` ルールを使用
+
+- **対象**: 「XXX業務のステアリングポリシーを生成してください」等のポリシー生成依頼
+- **ルール読み込み**: `.steering/aws-aidlc-rules/core-workflow.md` をエントリポイントとして読み込む
+- **詳細ルール**: `.steering/aws-aidlc-rule-details/` 配下のフェーズ別ルールに従う
+- **フェーズ**: Discovery → Design → Generation → Refinement
+
+### 判定基準
+
+| ユーザーの依頼 | 使用ルール |
+|---|---|
+| 「ステアリングポリシーを生成して」 | `.steering/` |
+| 「XXX業務のエージェントを作って」 | `.steering/` |
+| 「このリポジトリを改善して」 | `.aidlc/` |
+| 「バグを修正して」 | `.aidlc/` |
+| 「新機能を追加して」 | `.aidlc/` |
+| 「ドキュメントを更新して」 | `.aidlc/` |
+
+## ディレクトリ構造
+
+```text
+.aidlc/                          # リポジトリ改善用ルール（AI-DLC）
+├── aws-aidlc-rules/
+│   └── core-workflow.md         # メインワークフロー
+└── aws-aidlc-rule-details/
+    ├── common/                  # 共通ルール
+    ├── inception/               # 企画フェーズ
+    ├── construction/            # 構築フェーズ
+    └── operations/              # 運用フェーズ
+
+.steering/                       # ポリシー生成用ルール
+├── aws-aidlc-rules/
+│   └── core-workflow.md         # メインワークフロー
+└── aws-aidlc-rule-details/
+    ├── common/                  # 共通ルール
+    ├── discovery/               # 調査フェーズ
+    ├── design/                  # 設計フェーズ
+    ├── generation/              # 生成フェーズ
+    └── refinement/              # 精緻化フェーズ
+
+steering-docs/                   # ポリシー生成時の作業ドキュメント
+.claude/rules/                   # Claude Code ルーティングルール
+```
+
+## Red Teamレビュー（必須）
+
+AI-DLCワークフローでレビューが必要な成果物を作成・改善した場合、**必ず** Red Teamレビューを実施すること。
+
+### 対象
+
+以下の成果物が作成または大幅改訂された場合:
+- DISCOVERY成果物（purpose-analysis-summary, domain-research-summary, scope-definition-summary）
+- DESIGN成果物（workflow-architecture, common-rules-design, phase-rules-design, quality-mechanisms-design）
+- GENERATION成果物（core-workflow.md, common rules, phase rules）
+- REFINEMENT成果物（completeness-report, consistency-report, calibration-scorecard）
+
+### 実施方法
+
+2つのレビューエージェントを**並行実行**する:
+
+1. **`oh-my-claudecode:critic`** — 厳格なRed Teamレビュー。REJECT/ACCEPTの判定、CRITICAL/MAJOR/MINOR finding、具体的改善提案
+2. **`codex:codex-rescue`** — 定量分析・代替実装の提案。ファイル別品質スコア、具体的な改善コード例
+
+### レビュー基準
+
+- **ACCEPT**: CRITICAL finding なし、MAJOR finding 2件以下
+- **CONDITIONAL ACCEPT**: CRITICAL なし、MAJOR 3件以上 → 指摘対応後に再レビュー不要
+- **REJECT**: CRITICAL 1件以上 → 指摘を反映して改訂後、再レビュー必須
+
+### ワークフロー
+
+```
+成果物作成 → Red Teamレビュー（critic + codex並行）→ 指摘反映 → [REJECTの場合: 再レビュー] → ユーザー承認
+```
+
+### 例外
+
+- 既存ファイルの軽微な修正（typo修正、フォーマット統一等）はレビュー不要
+- ユーザーが明示的にレビュースキップを指示した場合
 
 ## 言語
 
-日本語で応答してください。
+日本語で応答してくだ���い。

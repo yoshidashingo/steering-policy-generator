@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stegoro — AIエージェント用ステアリングポリシー自動生成</title>
+  <meta name="description" content="目的別AIエージェントを駆動するステアリングポリシーを、構造化された品質保証ワークフローで自動生成します。">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+      color: #1d1d1f;
+      background: #fff;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #0066cc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 640px; margin: 0 auto; padding: 0 24px; }
+
+    header {
+      text-align: center;
+      padding: 80px 24px 48px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    header h1 { font-size: 32px; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.5px; }
+    header p { font-size: 17px; color: #6e6e73; max-width: 480px; margin: 0 auto 24px; }
+    .lang { font-size: 13px; color: #86868b; }
+    .lang a { color: #86868b; }
+
+    .dl-btn {
+      display: inline-block;
+      background: #0066cc;
+      color: #fff;
+      padding: 10px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      margin: 20px 4px 0;
+      transition: background 0.2s;
+    }
+    .dl-btn:hover { background: #0055b3; text-decoration: none; }
+    .dl-btn-secondary {
+      background: transparent;
+      color: #0066cc;
+      border: 1px solid #d2d2d7;
+    }
+    .dl-btn-secondary:hover { background: #f5f5f7; }
+
+    section { padding: 48px 24px; border-bottom: 1px solid #f0f0f0; }
+    section:last-of-type { border-bottom: none; }
+    section h2 { font-size: 22px; font-weight: 600; margin-bottom: 20px; }
+
+    ul.features { list-style: none; }
+    ul.features li { padding: 6px 0; font-size: 15px; }
+    ul.features li::before { content: "\2014"; color: #86868b; margin-right: 8px; }
+
+    .phase-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px; }
+    .phase-table th { text-align: left; padding: 10px 12px; background: #f5f5f7; font-weight: 600; border-bottom: 1px solid #e8e8ed; }
+    .phase-table td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+    .phase-table tr:last-child td { border-bottom: none; }
+
+    .info-box {
+      background: #f5f5f7;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #1d1d1f;
+    }
+    .info-box p { margin-bottom: 8px; }
+    .info-box p:last-child { margin-bottom: 0; }
+    .info-box code {
+      background: #e8e8ed;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    .faq dt {
+      font-weight: 600;
+      font-size: 15px;
+      margin-top: 20px;
+    }
+    .faq dt:first-child { margin-top: 0; }
+    .faq dd {
+      font-size: 14px;
+      color: #6e6e73;
+      margin-top: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: #86868b;
+    }
+    footer a { color: #86868b; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>stegoro</h1>
+  <p>目的別AIエージェントを駆動するステアリングポリシーを、構造化された品質保証ワークフローで自動生成します。</p>
+  <a href="https://github.com/yoshidashingo/steering-policy-generator" class="dl-btn">GitHub</a>
+  <br>
+  <p class="lang" style="margin-top:20px"><a href="index.html">English</a> &middot; <a href="ja.html">日本語</a></p>
+</header>
+
+<section>
+  <div class="container">
+    <h2>Why &mdash; なぜ必要か</h2>
+    <p style="font-size:15px">目的別AIエージェントの構築は難しい課題です。構造化されたポリシーがなければ、エージェントの出力は一貫性を欠き、重要なバリデーションを飛ばし、品質保証が不十分になります。手作業でポリシーを書くのは時間がかかり、ミスが起きやすい作業です。</p>
+    <p style="font-size:15px;margin-top:12px"><strong>stegoro</strong> は、エージェントの目的の理解から完全な品質検証済みポリシーセットの生成まで、ポリシー作成プロセス全体を自動化します。</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>What &mdash; 何ができるか</h2>
+    <ul class="features">
+      <li><strong>4フェーズワークフロー</strong> &mdash; Discovery、Design、Generation、Refinementで網羅的にポリシー作成</li>
+      <li><strong>適応的深度</strong> &mdash; ドメインの複雑さに応じてリサーチ深度を自動調整</li>
+      <li><strong>4種のエージェントタイプ</strong> &mdash; Process、Task、Analytical、Hybridパターンに対応</li>
+      <li><strong>AI-DLC品質保証</strong> &mdash; 11品質次元で出力を検証</li>
+      <li><strong>対話的フロー</strong> &mdash; すべての重要な意思決定に承認ゲート</li>
+      <li><strong>セッション継続</strong> &mdash; セッションをまたいだ中断・再開が可能</li>
+      <li><strong>完全な監査証跡</strong> &mdash; ISO 8601タイムスタンプで全意思決定を記録</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>How &mdash; 仕組み</h2>
+    <table class="phase-table">
+      <thead>
+        <tr><th>フェーズ</th><th>目的</th><th>主なアクティビティ</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Discovery</strong></td>
+          <td>何を・なぜ作るかを理解</td>
+          <td>目的分析、ドメインリサーチ、利害関係者の特定、スコープ定義</td>
+        </tr>
+        <tr>
+          <td><strong>Design</strong></td>
+          <td>ポリシーを設計</td>
+          <td>ワークフローアーキテクチャ、共通ルール、フェーズルール、品質メカニズム</td>
+        </tr>
+        <tr>
+          <td><strong>Generation</strong></td>
+          <td>ポリシーファイルを生成</td>
+          <td>コアワークフロー、共通ルール、フェーズルール、統合バリデーション</td>
+        </tr>
+        <tr>
+          <td><strong>Refinement</strong></td>
+          <td>品質を保証</td>
+          <td>完全性レビュー、一貫性レビュー、品質キャリブレーション</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>はじめ方</h2>
+    <div class="info-box">
+      <p><strong>前提条件:</strong> <a href="https://claude.ai/code">Claude Code</a> がインストール・設定済みであること。</p>
+    </div>
+    <div class="info-box" style="margin-top:12px">
+      <p><strong>1.</strong> リポジトリをクローン:</p>
+      <p><code>git clone https://github.com/yoshidashingo/steering-policy-generator.git</code></p>
+      <p><strong>2.</strong> Claude Codeを開いて依頼:</p>
+      <p><code>コードレビューエージェント用のステアリングポリシーを生成してください。</code></p>
+      <p><strong>3.</strong> 対話的な4フェーズワークフローに沿って進めます。明示的な承認なしにジェネレーターが先に進むことはありません。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>FAQ</h2>
+    <dl class="faq">
+      <dt>どのような種類のエージェントに対応していますか？</dt>
+      <dd>あらゆる目的別AIエージェントに対応します。Processエージェント（マルチフェーズワークフロー）、Taskエージェント（集中的な操作）、Analyticalエージェント（データ駆動）、Hybridエージェント（複合パターン）の4タイプをサポートしています。</dd>
+
+      <dt>ポリシーの生成にどのくらい時間がかかりますか？</dt>
+      <dd>ドメインの複雑さによります。シンプルなTaskエージェントは1セッションで完了することもありますが、複数の利害関係者を持つ複雑なProcessエージェントは数セッションにまたがることがあります。</dd>
+
+      <dt>生成されたポリシーをカスタマイズできますか？</dt>
+      <dd>はい。生成されるのは編集可能なMarkdownファイルです。生成後に任意のファイルを修正でき、Refinementフェーズが修正の品質を保証します。</dd>
+
+      <dt>AI-DLCとは何ですか？</dt>
+      <dd>AI-Driven Development Life Cycleの略称です。適応的ワークフロー、必須チェックポイント、監査証跡、過信防止など、生成ポリシーのベンチマークとして使用される11の品質次元を定義しています。</dd>
+    </dl>
+  </div>
+</section>
+
+<footer>
+  <a href="https://github.com/yoshidashingo/steering-policy-generator">GitHub</a> &middot;
+  MIT License
+</footer>
+
+</body>
+</html>

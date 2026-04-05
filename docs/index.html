@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stegoro — Auto-generate steering policies for AI agents</title>
+  <meta name="description" content="Automatically generate steering policies that drive purpose-built AI agents through structured, quality-assured workflows.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      color: #1d1d1f;
+      background: #fff;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #0066cc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 640px; margin: 0 auto; padding: 0 24px; }
+
+    header {
+      text-align: center;
+      padding: 80px 24px 48px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    header h1 { font-size: 32px; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.5px; }
+    header p { font-size: 17px; color: #6e6e73; max-width: 480px; margin: 0 auto 24px; }
+    .lang { font-size: 13px; color: #86868b; }
+    .lang a { color: #86868b; }
+
+    .dl-btn {
+      display: inline-block;
+      background: #0066cc;
+      color: #fff;
+      padding: 10px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      margin: 20px 4px 0;
+      transition: background 0.2s;
+    }
+    .dl-btn:hover { background: #0055b3; text-decoration: none; }
+    .dl-btn-secondary {
+      background: transparent;
+      color: #0066cc;
+      border: 1px solid #d2d2d7;
+    }
+    .dl-btn-secondary:hover { background: #f5f5f7; }
+
+    section { padding: 48px 24px; border-bottom: 1px solid #f0f0f0; }
+    section:last-of-type { border-bottom: none; }
+    section h2 { font-size: 22px; font-weight: 600; margin-bottom: 20px; }
+
+    ul.features { list-style: none; }
+    ul.features li { padding: 6px 0; font-size: 15px; }
+    ul.features li::before { content: "\2014"; color: #86868b; margin-right: 8px; }
+
+    .phase-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px; }
+    .phase-table th { text-align: left; padding: 10px 12px; background: #f5f5f7; font-weight: 600; border-bottom: 1px solid #e8e8ed; }
+    .phase-table td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+    .phase-table tr:last-child td { border-bottom: none; }
+
+    .info-box {
+      background: #f5f5f7;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #1d1d1f;
+    }
+    .info-box p { margin-bottom: 8px; }
+    .info-box p:last-child { margin-bottom: 0; }
+    .info-box code {
+      background: #e8e8ed;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    .faq dt {
+      font-weight: 600;
+      font-size: 15px;
+      margin-top: 20px;
+    }
+    .faq dt:first-child { margin-top: 0; }
+    .faq dd {
+      font-size: 14px;
+      color: #6e6e73;
+      margin-top: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: #86868b;
+    }
+    footer a { color: #86868b; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>stegoro</h1>
+  <p>Auto-generate steering policies that drive purpose-built AI agents through structured, quality-assured workflows.</p>
+  <a href="https://github.com/yoshidashingo/steering-policy-generator" class="dl-btn">GitHub</a>
+  <br>
+  <p class="lang" style="margin-top:20px"><a href="index.html">English</a> &middot; <a href="ja.html">日本語</a></p>
+</header>
+
+<section>
+  <div class="container">
+    <h2>Why</h2>
+    <p style="font-size:15px">Building a purpose-built AI agent is hard. Without a structured policy, agents produce inconsistent outputs, skip validation, and lack quality assurance. Writing these policies by hand is time-consuming and error-prone.</p>
+    <p style="font-size:15px;margin-top:12px"><strong>stegoro</strong> automates the entire policy creation process &mdash; from understanding the agent's purpose to generating a complete, quality-calibrated policy set.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>What</h2>
+    <ul class="features">
+      <li><strong>4-Phase Workflow</strong> &mdash; Discovery, Design, Generation, and Refinement</li>
+      <li><strong>Adaptive Depth</strong> &mdash; Adjusts research depth based on domain complexity</li>
+      <li><strong>4 Agent Types</strong> &mdash; Process, Task, Analytical, and Hybrid patterns</li>
+      <li><strong>AI-DLC Quality</strong> &mdash; Validates against 11 quality dimensions</li>
+      <li><strong>Interactive Dialogue</strong> &mdash; Approval gates at every critical decision</li>
+      <li><strong>Session Continuity</strong> &mdash; Pause and resume across sessions</li>
+      <li><strong>Complete Audit Trail</strong> &mdash; ISO 8601 timestamped decision logging</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>How It Works</h2>
+    <table class="phase-table">
+      <thead>
+        <tr><th>Phase</th><th>Purpose</th><th>Key Activities</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Discovery</strong></td>
+          <td>Understand what &amp; why</td>
+          <td>Purpose analysis, domain research, stakeholder identification, scope definition</td>
+        </tr>
+        <tr>
+          <td><strong>Design</strong></td>
+          <td>Architect the policy</td>
+          <td>Workflow architecture, common rules, phase rules, quality mechanisms</td>
+        </tr>
+        <tr>
+          <td><strong>Generation</strong></td>
+          <td>Create policy files</td>
+          <td>Core workflow, common rules, phase rules, integration validation</td>
+        </tr>
+        <tr>
+          <td><strong>Refinement</strong></td>
+          <td>Ensure quality</td>
+          <td>Completeness review, consistency review, quality calibration</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Getting Started</h2>
+    <div class="info-box">
+      <p><strong>Prerequisites:</strong> <a href="https://claude.ai/code">Claude Code</a> installed and configured.</p>
+    </div>
+    <div class="info-box" style="margin-top:12px">
+      <p><strong>1.</strong> Clone the repository:</p>
+      <p><code>git clone https://github.com/yoshidashingo/steering-policy-generator.git</code></p>
+      <p><strong>2.</strong> Open Claude Code and request:</p>
+      <p><code>Generate a steering policy for a code review agent.</code></p>
+      <p><strong>3.</strong> Follow the interactive 4-phase workflow. The generator never advances without your explicit approval.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>FAQ</h2>
+    <dl class="faq">
+      <dt>What types of agents can it generate policies for?</dt>
+      <dd>Any purpose-built AI agent. It supports Process agents (multi-phase workflows), Task agents (focused operations), Analytical agents (data-driven), and Hybrid agents (mixed patterns).</dd>
+
+      <dt>How long does it take to generate a policy?</dt>
+      <dd>It depends on domain complexity. A simple task agent may take one session; a complex process agent with multiple stakeholders may span several sessions.</dd>
+
+      <dt>Can I customize the generated policy?</dt>
+      <dd>Yes. The generator produces editable Markdown files. You can modify any file after generation, and the Refinement phase helps ensure quality of modifications.</dd>
+
+      <dt>What is AI-DLC?</dt>
+      <dd>AI-Driven Development Life Cycle. It defines 11 quality dimensions used as the benchmark for generated policies, including adaptive workflow, mandatory checkpoints, audit trail, and overconfidence prevention.</dd>
+    </dl>
+  </div>
+</section>
+
+<footer>
+  <a href="https://github.com/yoshidashingo/steering-policy-generator">GitHub</a> &middot;
+  MIT License
+</footer>
+
+</body>
+</html>
