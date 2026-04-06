@@ -439,6 +439,20 @@ The next phase is **[Next Phase Name]**: [Brief description of what the next pha
 
 ---
 
+### Runtime vs Build-Time Phase Separation
+
+When the target agent includes a PACKAGING phase, the core-workflow.md MUST clearly distinguish:
+
+```text
+# Runtime Operational Phases
+Phase 1: [NAME] → Phase 2: [NAME] → Phase 3: [NAME] → ...
+
+# Build-Time Phase (independent of runtime)
+PACKAGING: Plugin Structure Generation → Automated Validation
+```
+
+---
+
 ## Content Depth Guidance
 
 Generated file depth should match the target agent's complexity:

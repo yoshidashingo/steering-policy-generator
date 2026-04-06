@@ -189,6 +189,8 @@ Before writing each file, verify:
 - [ ] All cross-references to other stage files are correct
 - [ ] Domain-specific content is present throughout
 - [ ] Terminology matches terminology.md
+- [ ] Execution Classification section present (ALWAYS or CONDITIONAL with Execute IF/Skip IF criteria)
+- [ ] Completion message language matches target language
 
 ##### 3f. Write File
 Write to: `.<agent-name>/<agent-name>-rule-details/<phase-dir>/<filename>.md`

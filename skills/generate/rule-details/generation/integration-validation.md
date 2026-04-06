@@ -123,6 +123,9 @@ Verify:
 **Orphaned Files**: [N]
 ```
 
+#### Additional Smoke Test Checks
+- [ ] All output paths pass through quality gate phase (no bypass)
+
 ### Step 3: Workflow Flow Validation
 **Action**: Trace every possible workflow path to verify completeness
 **Input**: Core workflow + all stage files

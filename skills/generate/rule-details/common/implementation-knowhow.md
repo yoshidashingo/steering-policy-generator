@@ -162,6 +162,20 @@ description: ...
 - ドメインコンテンツ注入ヒューリスティクス（G3の5ステップ）を必ず実行する
 - ドメイン特化率40%未満のファイルは追加注入対象としてフラグする
 
+### 並行生成パターン（効率化オプション）
+
+DESIGN成果物が全てApproved済みの場合、GENERATIONの3ステージ（G1/G2/G3）は並行実行が可能:
+
+| Agent | Input | Output |
+|-------|-------|--------|
+| G1: Core Workflow | Workflow Architecture + Quality Mechanisms | core-workflow.md |
+| G2: Common Rules | Common Rules Design + Domain Research | common/*.md |
+| G3: Phase Rules | Phase Rules Design + Domain Research | phase-N/*.md |
+
+**前提条件**: 全DESIGN成果物がApproved済み
+**リスク**: 並行生成後のG4(Integration Validation)で不整合検出時の修正コスト増
+**推奨**: 大規模ポリシー（25+ファイル）でコンテキスト節約が必要な場合のオプション
+
 ### Refinement フェーズでの注意点
 
 - 15品質次元すべてを定量的にエビデンス付きで評価する

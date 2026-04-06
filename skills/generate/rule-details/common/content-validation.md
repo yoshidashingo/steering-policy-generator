@@ -197,6 +197,22 @@ For each generated rule file, verify:
 
 ---
 
+## Generated Content Language Consistency
+
+### MANDATORY: Language Unification
+- During DISCOVERY Phase (Purpose Analysis), determine the target language for all generated policy files
+- ALL generated content (including Completion Messages, section headers, examples) MUST use the same language consistently
+- Mixed language (e.g., English Completion Messages + Japanese content) is NOT acceptable
+- Technical terms and identifiers (API names, file paths, stage codes like T1/R1) may remain in English
+
+### Validation Checklist
+- [ ] Completion Message options (A/B) use target language
+- [ ] Section headers use target language (or consistent English if preferred)
+- [ ] GOOD/BAD examples use target language
+- [ ] Error messages use target language
+
+---
+
 ## Plugin Structure Validation
 
 ### Required Checks for PACKAGING Phase

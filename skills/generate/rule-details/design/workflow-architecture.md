@@ -85,6 +85,31 @@ Phase 0: CONTEXT ASSESSMENT (determines mode)
 - Context-dependent branching
 - Complex state management
 
+**CRITICAL for Hybrid Agents**: All output paths (Mode A, Mode B, etc.) MUST converge through a common quality gate phase before final output. No output path may bypass quality verification. This prevents security risks (e.g., PII leakage through unverified paths).
+
+**Cyclic/Patrol Agent Architecture**:
+```
+Phase 1: SURVEILLANCE (schedule → connect → collect → detect)
+  → Phase 2: ASSESSMENT (score → identify → prioritize → classify)
+    → Phase 3: DISPATCH (execute/request → process → loop-control → verify)
+      → Phase 4: REPORTING (summary → preparation → audit)
+```
+- Schedule-driven or event-driven surveillance cycle
+- Loop control stage within DISPATCH (max iterations, timeout, deferral rules)
+- Time-based mode switching (e.g., daytime patrol vs nighttime preparation)
+- Requires explicit loop exit conditions to prevent infinite cycles
+- Typical Phases: 3-4 + REPORTING, variable stages per phase
+
+#### Runtime Loop Control Design Template
+
+| Parameter | Recommended Default | Rationale |
+|-----------|-------------------|-----------|
+| Max loops per cycle | 3-5 | Prevents infinite processing |
+| Cycle timeout | 75% of cycle interval | Ensures buffer before next cycle |
+| New detection during cycle | Defer to next cycle | Prevents scope creep within cycle |
+| Approval wait timeout | 2h (with 30min reminder) | Prevents blocking on human approval |
+| Rollback window | Within same cycle | Limits blast radius of errors |
+
 ### Step 3: Design Phase Structure
 **Action**: Define the specific phases for the target agent
 **Input**: Base architecture + scope definition
@@ -97,6 +122,19 @@ For each phase, define:
 4. **Entry Criteria**: What must be true to enter this phase
 5. **Exit Criteria**: What must be true to leave this phase
 6. **Approximate Stage Count**: Expected number of stages
+
+### Step 3b: Scope-Design Reconciliation (MANDATORY)
+**Action**: Cross-check designed phases/stages against Scope Definition
+**Input**: Phase structure + scope-definition-summary.md
+**Output**: Reconciliation check result
+
+Verify:
+1. Every "in-scope" item from scope definition has a corresponding phase or stage
+2. Every scope-defined capability maps to at least one stage
+3. No scope items are orphaned (mentioned in scope but absent in design)
+4. Out-of-scope items are NOT accidentally included in the design
+
+**If orphaned items found**: Add missing stages or explicitly move items to out-of-scope with documented reasoning.
 
 ### Step 4: Design Stage Structure
 **Action**: Define all stages within each phase
@@ -115,6 +153,13 @@ For each stage, define:
 7. **Outputs**: What artifacts the stage produces
 8. **Approval Gate**: Whether user approval is needed before proceeding
 9. **Adaptive Depth**: Whether the stage supports multiple depth levels
+
+### PACKAGING Phase Design Rule
+**CRITICAL**: PACKAGING phase is a **build-time** workflow, NOT part of the runtime operational flow.
+- PACKAGING executes ONLY during initial policy creation or updates
+- Runtime flow phases (e.g., TRIAGE→RESPONSE→QUALITY) must NOT depend on PACKAGING
+- Workflow visualization MUST clearly separate runtime and build-time flows
+- State Tracking Design for runtime need NOT include PACKAGING state
 
 ### Step 5: Design Stage Dependencies
 **Action**: Map dependencies between stages

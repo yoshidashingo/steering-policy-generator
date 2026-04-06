@@ -263,6 +263,19 @@ mkdir -p steering-docs/<agent-name>/discovery
 
 ---
 
+## Red Team Review — DESIGN Phase (MANDATORY)
+
+After completing all 4 DESIGN phase artifacts:
+1. **MANDATORY**: Execute Red Team review per CLAUDE.md rules
+   - Launch `oh-my-claudecode:critic` (厳格なRed Teamレビュー) AND `codex:codex-rescue` (定量分析) in parallel
+2. **Review criteria**: ACCEPT (CRITICAL 0, MAJOR ≤ 2) / CONDITIONAL ACCEPT (CRITICAL 0, MAJOR ≥ 3) / REJECT (CRITICAL ≥ 1)
+3. **If REJECT**: Incorporate findings, revise artifacts, re-submit for review
+4. **If CONDITIONAL ACCEPT**: Incorporate findings, no re-review needed
+5. **MANDATORY**: Log Red Team findings in audit.md
+6. **Wait for Explicit Approval**: Present Red Team results to user — DO NOT PROCEED until user confirms
+
+---
+
 # GENERATION PHASE
 
 **Purpose**: Creating the actual steering policy files
@@ -355,6 +368,19 @@ mkdir -p steering-docs/<agent-name>/discovery
 5. **If validation FAIL**: Route by test layer — Structure FAIL → G1, Content FAIL (Dim 12-15) → G3, Smoke FAIL → G1 (flow break)
 6. **Wait for Explicit Approval**: Present validation report — DO NOT PROCEED until user confirms
 7. **MANDATORY**: Log user's response in audit.md with complete raw input
+
+---
+
+## Red Team Review — GENERATION Phase (MANDATORY)
+
+After completing all 4 GENERATION phase stages:
+1. **MANDATORY**: Execute Red Team review per CLAUDE.md rules
+   - Launch `oh-my-claudecode:critic` (厳格なRed Teamレビュー) AND `codex:codex-rescue` (定量分析) in parallel
+2. **Review criteria**: ACCEPT (CRITICAL 0, MAJOR ≤ 2) / CONDITIONAL ACCEPT (CRITICAL 0, MAJOR ≥ 3) / REJECT (CRITICAL ≥ 1)
+3. **If REJECT**: Incorporate findings, revise generated files, re-submit for review
+4. **If CONDITIONAL ACCEPT**: Incorporate findings, no re-review needed
+5. **MANDATORY**: Log Red Team findings in audit.md
+6. **Wait for Explicit Approval**: Present Red Team results to user — DO NOT PROCEED until user confirms
 
 ---
 

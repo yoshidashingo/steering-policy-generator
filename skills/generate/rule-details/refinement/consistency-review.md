@@ -120,6 +120,19 @@ For each completion message, verify:
 - [ ] Surrounded by `---` separators
 - [ ] Bold formatting consistent
 
+### Step 4b: Completion Message Language Consistency
+**Action**: Verify all Completion Messages use the target language consistently
+**Input**: All phase rule files + target language determined in Purpose Analysis
+**Output**: Language consistency report
+
+For each Completion Message, verify:
+- [ ] Option A/B text uses target language (not mixed)
+- [ ] Summary section uses target language
+- [ ] No mixed-language patterns (e.g., English options in a Japanese policy)
+- [ ] Technical identifiers (file paths, stage codes) may remain in English
+
+**Fix**: Update non-compliant Completion Messages to use target language consistently.
+
 ### Step 5: Question Format Consistency
 **Action**: Verify question format instructions are consistent
 **Input**: All files that reference question generation
