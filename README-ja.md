@@ -114,9 +114,8 @@
 
 | エージェント | 説明 | ディレクトリ |
 |------------|------|------------|
-| **AI-DLC** | AI駆動開発ライフサイクル | `.aidlc/` |
-| **Proposal Writer** | RFP対応・提案書作成 | `.proposal-writer/` |
-| **Steering Policy Maker** | このツール自身のポリシー（自己参照） | `.steering/` |
+| **Customer Support Agent** | カスタマーサポートチケット対応・品質レビュー | `.customer-support-agent/` |
+| **Steering Policy Maker** | このツール自身のポリシー（自己参照） | `skills/generate/` |
 
 ## ドキュメント
 
