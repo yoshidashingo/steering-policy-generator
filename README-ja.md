@@ -115,7 +115,8 @@
 | エージェント | 説明 | ディレクトリ |
 |------------|------|------------|
 | **Customer Support Agent** | カスタマーサポートチケット対応・品質レビュー | `.customer-support-agent/` |
-| **Steering Policy Maker** | このツール自身のポリシー（自己参照） | `skills/generate/` |
+| **Proposal Writer** | RFP分析・提案書作成 | `.proposal-writer/` |
+| **Sales Pipeline Agent** | 巡回サイクル型・営業パイプライン管理 | `.sales-pipeline-agent/` |
 
 ## ドキュメント
 
