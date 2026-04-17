@@ -57,6 +57,9 @@ ehthumbs.db
 aidlc-state.md
 audit.md
 
+# Steering policy generation workspace (created per session by /stegoro:generate)
+steering-docs/
+
 # Oh-My-ClaudeCode
 .omc/
 
