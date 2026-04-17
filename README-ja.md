@@ -114,13 +114,13 @@
 
 ### このツールで作成されたエージェント例
 
-このリポジトリには、ツールが生成したポリシーの実例が含まれています:
+このリポジトリには、ツールが生成したポリシーの実例が[`samples/`](samples/)ディレクトリに含まれています:
 
 | エージェント | 説明 | ディレクトリ |
 |------------|------|------------|
-| **Customer Support Agent** | カスタマーサポートチケット対応・品質レビュー | `.customer-support-agent/` |
-| **Proposal Writer** | RFP分析・提案書作成 | `.proposal-writer/` |
-| **Sales Pipeline Agent** | 巡回サイクル型・営業パイプライン管理 | `.sales-pipeline-agent/` |
+| **Customer Support Agent** | カスタマーサポートチケット対応・品質レビュー | [`samples/customer-support-agent/`](samples/customer-support-agent/) |
+| **Proposal Writer** | RFP分析・提案書作成 | [`samples/proposal-writer/`](samples/proposal-writer/) |
+| **Sales Pipeline Agent** | 巡回サイクル型・営業パイプライン管理 | [`samples/sales-pipeline-agent/`](samples/sales-pipeline-agent/) |
 
 ## ドキュメント
 
