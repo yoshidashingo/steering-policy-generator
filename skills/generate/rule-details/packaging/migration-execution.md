@@ -79,7 +79,7 @@ For each file in the mapping:
 **Output**: Updated references
 
 Files to check and update:
-- `CLAUDE.md` — routing rules, directory structure documentation
+- `CLAUDE.md` — routing rules, directory structure documentation（下記の特別処理を参照）
 - `.claude/rules/routing-*.md` — Glob-based routing rules
 - `README.md` / `README-ja.md` — documentation references
 - Any other files referencing legacy paths
@@ -88,6 +88,30 @@ Files to check and update:
 1. Grep for all legacy path patterns across the repository
 2. Update each reference to the new plugin path
 3. Verify no legacy path references remain
+
+#### CLAUDE.md の特別処理（上書き防止）
+
+`steering-docs/<agent-name>/packaging/CLAUDE.md`（Step 7b生成物）の配置は以下の分岐で行う。**自動上書きは禁止**。
+
+**ケース A: プロジェクトルートに CLAUDE.md が存在しない**
+1. `steering-docs/<agent-name>/packaging/CLAUDE.md` をプロジェクトルートにコピー
+2. コピー完了を audit.md に記録
+3. ユーザーへ通知: 「CLAUDE.md を新規作成しました。内容を確認してください。」
+
+**ケース B: プロジェクトルートに CLAUDE.md が既に存在する**
+1. 既存 CLAUDE.md と `steering-docs/<agent-name>/packaging/CLAUDE.md` の差分を生成・表示
+2. **DO NOT PROCEED** — ユーザーに次の選択を提示:
+   ```
+   CLAUDE.md が既に存在します。以下の方法で対応してください:
+
+   A) 手動マージ — 表示した差分を参考に既存CLAUDE.mdにRed Teamルール等を追記してください
+   B) 生成物で上書き — 既存の内容を失います（バックアップを推奨）
+   C) スキップ — CLAUDE.mdは変更しません（後で手動対応）
+   ```
+3. ユーザーの選択を audit.md に記録してから実行
+4. **A の場合**: `steering-docs/<agent-name>/packaging/CLAUDE.md` を参照用として保持し、ユーザーが手動編集。完了確認を待つ
+5. **B の場合**: 上書き前に `CLAUDE.md.bak` としてバックアップを作成してから上書き
+6. **C の場合**: スキップを audit.md に記録し次のステップへ
 
 ### Step 6: Mark Legacy as Deprecated
 **Action**: Add deprecation notice to legacy directory
